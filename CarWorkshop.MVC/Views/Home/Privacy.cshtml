@@ -1,0 +1,44 @@
+﻿@using System.Runtime.InteropServices
+
+@model List<Person>
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+    var currentYear = DateTime.Now.Year;
+    var dayOfWeek = DateTime.Now.DayOfWeek;
+    var email = "konrad_mirek@interia.pl";
+
+
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<p>Created at @currentYear</p>
+
+@if (dayOfWeek == DayOfWeek.Sunday || dayOfWeek == DayOfWeek.Saturday)
+{
+    <p>Kurła w koncu łikend!!!</p>
+}
+else
+{
+    <p>Nima łikendu, teraz jest @dayOfWeek. No yet the weekend :(</p>
+}
+
+@switch (dayOfWeek)
+{
+    case DayOfWeek.Monday:
+        <p>It's monday :(</p> 
+        break;
+    default:
+        <p>It is not monday :)</p>
+        break;
+}
+<p>test</p>
+
+<a href="mailto:Support@CommonSecurityDescriptor.com">@email</a>
+<br
+@foreach (var person in Model)
+{
+    <p>@person.FirstName | @person.LastName </p>
+}
