@@ -8,7 +8,7 @@ namespace CarWorkshop.Domain.Entities
 {
     public class CarWorkshop
     {
-        public required int Id { get; set; }        
+        public int Id { get; set; }        
 
         public string Name { get; set; } = default!;        // Name is required
         public string? Description { get; set; }            // Description is optional

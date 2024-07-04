@@ -1,3 +1,4 @@
+using CarWorkshop.Infrastructure.Extensions;
 using CarWorkshop.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,8 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Add services to the container.
-builder.Services.AddDbContext<CarWorkshopDbContext>(options => options.UseSqlServer(
-    builder.Configuration.GetConnectionString("CarWorkshop")));             // Add CarWorkshopDbContext to the services container, get connection string from appsettings.json
+ builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
