@@ -12,6 +12,12 @@ namespace CarWorkshop.MVC.Controllers
             _carWorkshopService = carWorkshopService;
         }
 
+        //return view after create carWoirkshop
+        public ActionResult Create()
+        {
+            return View();
+        }
+
         //this is the controller for the CarWorkshop entity, Post methods are used to create new CarWorkshop entities
         [HttpPost]
         public async Task<IActionResult> Create(Domain.Entities.CarWorkshop carWorkshop)

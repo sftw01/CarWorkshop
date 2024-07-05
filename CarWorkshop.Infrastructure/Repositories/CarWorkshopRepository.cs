@@ -10,8 +10,8 @@ using CarWorkshop.Infrastructure.Persistence;
 
 namespace CarWorkshop.Infrastructure.Repositories
 {
-    //implementacja interfejsu ICarWorkshopRepository
-    public class CarWorkshopRepository : ICarWorkshopRepository
+    //implement interface ICarWorkshopRepository
+    internal class CarWorkshopRepository : ICarWorkshopRepository
     {
         private readonly CarWorkshopDbContext _dbContext;
 

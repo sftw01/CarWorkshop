@@ -8,7 +8,7 @@ namespace CarWorkshop.Domain.Interfaces
 {
     public interface ICarWorkshopRepository
     {
-        //definujemy metobe encji carWorksop
+        //
         Task Create(Domain.Entities.CarWorkshop carWorkshop);
     }
 }

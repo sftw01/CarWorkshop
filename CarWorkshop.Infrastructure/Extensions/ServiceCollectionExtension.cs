@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CarWorkshop.Domain.Interfaces;
 using CarWorkshop.Infrastructure.Persistence;
+using CarWorkshop.Infrastructure.Repositories;
 using CarWorkshop.Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,9 +20,9 @@ namespace CarWorkshop.Infrastructure.Extensions
             services.AddDbContext<CarWorkshopDbContext>(options => options.UseSqlServer(
                 configuration.GetConnectionString("CarWorkshop")));             // Add CarWorkshopDbContext to the services container, get connection string from appsettings.json
 
-            services.AddScoped<CarWorkshopSeeder>();
+            services.AddScoped<CarWorkshopSeeder>();        
 
-            services.AddScoped<ICarWorkshopRepository, ICarWorkshopRepository>();   
+            services.AddScoped<ICarWorkshopRepository, CarWorkshopRepository>();   //aadd tpo cointainer     
         }
     }
 }
