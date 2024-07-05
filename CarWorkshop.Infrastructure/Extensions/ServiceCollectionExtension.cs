@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarWorkshop.Domain.Interfaces;
 using CarWorkshop.Infrastructure.Persistence;
 using CarWorkshop.Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,8 @@ namespace CarWorkshop.Infrastructure.Extensions
                 configuration.GetConnectionString("CarWorkshop")));             // Add CarWorkshopDbContext to the services container, get connection string from appsettings.json
 
             services.AddScoped<CarWorkshopSeeder>();
+
+            services.AddScoped<ICarWorkshopRepository, ICarWorkshopRepository>();   
         }
     }
 }
