@@ -17,7 +17,7 @@ namespace CarWorkshop.Infrastructure.Seeders
             _dbContext = dbContext;
         }
 
-        private async Task Seed()
+        public async Task Seed()
         {
             // Check if database is connected
             if (await _dbContext.Database.CanConnectAsync())
@@ -37,6 +37,8 @@ namespace CarWorkshop.Infrastructure.Seeders
                             Street = "Szewska 1"
                         }
                     };
+
+                    mazdaAso.EncodeName();
                     _dbContext.CarWorkshops.Add(mazdaAso);
 
                     await _dbContext.SaveChangesAsync();
