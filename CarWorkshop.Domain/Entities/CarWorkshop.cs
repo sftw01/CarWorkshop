@@ -16,7 +16,7 @@ namespace CarWorkshop.Domain.Entities
 
         public CarWorkshopContactDetails ContactDetails { get; set; } = default!;       //
 
-        public string About { get; set; }
+        public string? About { get; set; }              //is not required - can be empty! ????
 
         public string EncodedName { get; private set; } = default!;         //used for SEO purposes 
 
