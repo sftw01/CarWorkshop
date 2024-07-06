@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CarWorkshop.Domain.Interfaces;
 
 using CarWorkshop.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarWorkshop.Infrastructure.Repositories
 {
@@ -21,8 +22,13 @@ namespace CarWorkshop.Infrastructure.Repositories
 
         public async Task Create(Domain.Entities.CarWorkshop carWorkshop)
         {
-            _dbContext.Add(carWorkshop);        //add carWorkshop entity to db context
+            _dbContext.Add(carWorkshop);                //add carWorkshop entity to db context
             await _dbContext.SaveChangesAsync();        //save changes
         }
+
+        //return carworkshop by name or null if not found
+        public Task<Domain.Entities.CarWorkshop?> GetByName(string name)
+            => _dbContext.CarWorkshops.FirstOrDefaultAsync(cw => cw.Name.ToLower() == name.ToLower());
+
     }
 }

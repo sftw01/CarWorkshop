@@ -23,7 +23,7 @@ namespace CarWorkshop.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CarWorkshopDto carWorkshop)
         {
-            if (!ModelState.IsValid)    //if model is not valid - temptate of validation is included in CarWorksghopDto
+            if (!ModelState.IsValid)    //if model is not valid - temptate of validation is included in CarWorksghopDtoValidator
             {
                 return View();
             }
