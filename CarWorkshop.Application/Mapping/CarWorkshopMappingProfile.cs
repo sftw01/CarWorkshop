@@ -14,6 +14,7 @@ namespace CarWorkshop.Application.Mapping
 
         public CarWorkshopMappingProfile()
         {
+            //map CarWorkshop to CarWorkshopDto
             CreateMap<CarWorkshopDto, Domain.Entities.CarWorkshop>()
                 .ForMember(e => e.ContactDetails, opt => opt.MapFrom(src => new CarWorkshopContactDetails()
                 {
@@ -23,6 +24,14 @@ namespace CarWorkshop.Application.Mapping
                     Street = src.Street
                 }
                 ));
+
+            //map CarWorkshopDto to CarWorkshop
+            CreateMap<Domain.Entities.CarWorkshop, CarWorkshopDto>()
+                .ForMember(dto => dto.Street, opt => opt.MapFrom(scr => scr.ContactDetails.Street))
+                .ForMember(dto => dto.City, opt => opt.MapFrom(scr => scr.ContactDetails.City))
+                .ForMember(dto => dto.PostalCode, opt => opt.MapFrom(scr => scr.ContactDetails.PostalCode))
+                .ForMember(dto => dto.PhoneNumber, opt => opt.MapFrom(scr => scr.ContactDetails.PhoneNumber));
+
         }
     }
 }

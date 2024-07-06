@@ -28,5 +28,14 @@ namespace CarWorkshop.Application.Service
 
             await _carWorkshopRepository.Create(carWorkshop);
         }
+
+        public async Task<IEnumerable<CarWorkshopDto>> GetAll()
+        {
+            var CarWorkshops = await _carWorkshopRepository.GetAll();
+
+            var dtos = _mapper.Map<IEnumerable<CarWorkshopDto>>(CarWorkshops);      //map CarWorkshops list to CarWorkshopDtos list
+
+            return dtos;
+        }
     }
 }
