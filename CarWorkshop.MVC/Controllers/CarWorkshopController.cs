@@ -38,8 +38,7 @@ namespace CarWorkshop.MVC.Controllers
 
             await _carWorkshopService.Create(carWorkshop);
 
-            return RedirectToAction(nameof(Create)); //TODO: refactor
+            return RedirectToAction(nameof(Index));  //after creating carWorkshop redirect to index view
         }
-
     }
 }
