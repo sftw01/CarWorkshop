@@ -1,4 +1,5 @@
-﻿using CarWorkshop.Application.Service;
+﻿using CarWorkshop.Application.CarWorkshop;
+using CarWorkshop.Application.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarWorkshop.MVC.Controllers
@@ -20,7 +21,7 @@ namespace CarWorkshop.MVC.Controllers
 
         //this is the controller for the CarWorkshop entity, Post methods are used to create new CarWorkshop entities
         [HttpPost]
-        public async Task<IActionResult> Create(Domain.Entities.CarWorkshop carWorkshop)
+        public async Task<IActionResult> Create(CarWorkshopDto carWorkshop)
         {
             await _carWorkshopService.Create(carWorkshop);
 

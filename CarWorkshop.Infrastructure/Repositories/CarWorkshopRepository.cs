@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using CarWorkshop.Domain.Interfaces;
 
-using CarWorkshop.Domain.Interfaces;
 using CarWorkshop.Infrastructure.Persistence;
 
 namespace CarWorkshop.Infrastructure.Repositories
