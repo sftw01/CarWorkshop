@@ -1,23 +1,26 @@
 ﻿using CarWorkshop.Application.CarWorkshop;
-using CarWorkshop.Application.Service;
+using CarWorkshop.Application.CarWorkshop.Commands.CreateCarWorkshop;
+using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
+//using CarWorkshop.Application.Service;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarWorkshop.MVC.Controllers
 {
     public class CarWorkshopController : Controller
     {
-        private readonly ICarWorkshopService _carWorkshopService;
+        private readonly IMediator _mediator;
 
-        public CarWorkshopController(ICarWorkshopService carWorkshopService)
+        public CarWorkshopController(IMediator mediator)
         {
-            _carWorkshopService = carWorkshopService;
+            _mediator = mediator;
         }
 
         //get method for index view
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var CarWorkshops = await _carWorkshopService.GetAll();
+            var CarWorkshops = await _mediator.Send(new GetAllCarWorkshopsQuery());
             return View(CarWorkshops);
         }
 
@@ -29,14 +32,14 @@ namespace CarWorkshop.MVC.Controllers
 
         //this is the controller for the CarWorkshop entity, Post methods are used to create new CarWorkshop entities
         [HttpPost]
-        public async Task<IActionResult> Create(CarWorkshopDto carWorkshop)
+        public async Task<IActionResult> Create(CreateCarWorkshopCommand command)
         {
             if (!ModelState.IsValid)    //if model is not valid - temptate of validation is included in CarWorksghopDtoValidator
             {
-                return View();
+                return View(command);
             }
 
-            await _carWorkshopService.Create(carWorkshop);
+            await _mediator.Send(command);
 
             return RedirectToAction(nameof(Index));  //after creating carWorkshop redirect to index view
         }
