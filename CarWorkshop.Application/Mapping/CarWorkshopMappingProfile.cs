@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using CarWorkshop.Application.CarWorkshop;
+using CarWorkshop.Application.CarWorkshop.Commands.EditCarworkshop;
 using CarWorkshop.Domain.Entities;
 
 namespace CarWorkshop.Application.Mapping
@@ -32,6 +33,8 @@ namespace CarWorkshop.Application.Mapping
                 .ForMember(dto => dto.PostalCode, opt => opt.MapFrom(scr => scr.ContactDetails.PostalCode))
                 .ForMember(dto => dto.PhoneNumber, opt => opt.MapFrom(scr => scr.ContactDetails.PhoneNumber));
 
+
+            CreateMap<CarWorkshopDto, EditCarWorkshopCommand>();
         }
     }
 }
