@@ -51,6 +51,7 @@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
+       
         </form>
     </div>
 </div>
@@ -58,6 +59,11 @@
 <div>
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
+@* <input type="submit" value="Delete" class="btn btn-danger" />
+<input type="submit" class="btn btn-danger">Usun</input> *@
+
+<a class="btn btn-danger" asp-controller="CarWorkshop" asp-action="Delete" asp-route-encodedName="@Model.EncodedName">Delete</a>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

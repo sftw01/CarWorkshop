@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarWorkshop.Application.CarWorkshop;
 using CarWorkshop.Application.CarWorkshop.Commands.CreateCarWorkshop;
+using CarWorkshop.Application.CarWorkshop.Commands.DeleteCarWorkshop;
 using CarWorkshop.Application.CarWorkshop.Commands.EditCarworkshop;
 using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
 using CarWorkshop.Application.CarWorkshop.Queries.GetCarWorkshopByEncodedName;
@@ -73,6 +74,15 @@ namespace CarWorkshop.MVC.Controllers
             return RedirectToAction(nameof(Index));  //after creating carWorkshop redirect to index view
         }
 
+  
+        [Route("CarWorkshop/{encodedName}/Delete")]
+        public async Task<ActionResult> Delete(string encodedName, DeleteCarWorkshopCommand command)
+        {
+            //Console.WriteLine();
+            await _mediator.Send(command);
+
+            return RedirectToAction(nameof(Index));  //after remopve carWorkshop redirect to index view
+        }
 
 
         //this is the controller for the CarWorkshop entity, Post methods are used to create new CarWorkshop entities

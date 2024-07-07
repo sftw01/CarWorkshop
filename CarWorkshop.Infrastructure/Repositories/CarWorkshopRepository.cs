@@ -38,6 +38,19 @@ namespace CarWorkshop.Infrastructure.Repositories
 
         public Task Commit() => _dbContext.SaveChangesAsync();
 
+        public async Task Delete(string encodedName)
+        {
+            var carWorkshopToRemove = _dbContext.CarWorkshops.FirstOrDefault(c => c.EncodedName == encodedName);
+            if(carWorkshopToRemove is null)
+            {
+                new Exception("Brak warsztatu w bazie danych");
+            }
+
+            var result = _dbContext.Remove(carWorkshopToRemove);
+            _dbContext.SaveChanges();
+            Console.WriteLine("usunieto ");
+        }
+
     }
- 
+
 }

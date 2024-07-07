@@ -14,5 +14,6 @@ namespace CarWorkshop.Domain.Interfaces
         Task<IEnumerable<Entities.CarWorkshop>> GetAll();
         Task<Domain.Entities.CarWorkshop> GetByEncodedName(string encodedName);
         Task Commit();
+        Task Delete(string encodedName);
     }
 }

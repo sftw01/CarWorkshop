@@ -11,6 +11,12 @@
 </p>
 
 <div class="row">
+
+    @if (!Model.Any())
+    {
+        <h1>Brak danych </h1>
+    }
+
     @foreach (var item in Model)
     {
         //card
