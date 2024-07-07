@@ -59,10 +59,34 @@
 <div>
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
-@* <input type="submit" value="Delete" class="btn btn-danger" />
-<input type="submit" class="btn btn-danger">Usun</input> *@
 
-<a class="btn btn-danger" asp-controller="CarWorkshop" asp-action="Delete" asp-route-encodedName="@Model.EncodedName">Delete</a>
+
+
+<!--Button Delete and modal-->
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Delete
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Potwierdz operacje</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Czy napewno chcesz usunąć  "@Model.Name" z zasobu?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" asp-controller="CarWorkshop">Close</button>
+               
+                <a class="btn btn-danger" asp-controller="CarWorkshop" asp-action="Delete" asp-route-encodedName="@Model.EncodedName">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @section Scripts {
