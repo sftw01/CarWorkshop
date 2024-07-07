@@ -25,7 +25,7 @@ namespace CarWorkshop.Application.CarWorkshop
         public string? City { get; set; }
         public string? PostalCode { get; set; }
 
-        public string? EncodedName { get; private set; } = default!;         
+        public string? EncodedName { get; set; } = default!;         
 
     }
 }
